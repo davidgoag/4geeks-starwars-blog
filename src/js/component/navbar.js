@@ -6,11 +6,6 @@ export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const [isHovering, setisHovering] = React.useState(-1);
 
-	const deleteFavorite = indexToRemove => {
-		let filterList = store.favoritesList.filter((favoriteToRemove, index) => index != indexToRemove);
-		actions.setStore({ favoritesList: filterList }); /*Problem here*/
-	};
-
 	return (
 		<nav className="navbar navbar-light bg-secondary bg-opacity-25">
 			<div className="container-fluid d-flex px-5">
@@ -37,7 +32,7 @@ export const Navbar = () => {
 									{favorite}
 									<span
 										className={`text-dark ${isHovering == index ? "" : "hidden"} px-2`}
-										onClick={() => deleteFavorite(index)}>
+										onClick={() => actions.deleteFavorite(favorite)}>
 										<i className="fas fa-trash-alt" />
 									</span>
 								</li>
