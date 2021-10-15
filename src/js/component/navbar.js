@@ -4,42 +4,11 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-
-	return (
-		<nav className="navbar navbar-light bg-secondary bg-opacity-25">
-			<div className="container-fluid d-flex px-5">
-				<a className="navbar-brand d-flex justify-content-start" href="#">
-					<img
-						src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FStar_Wars_logo_logotype.png&f=1&nofb=1"
-						height="35rem"
-						className="p-0 m-0"
-					/>
-				</a>
-				<Dropdown>
-					<Dropdown.Toggle variant="primary" id="dropdown-basic">
-						Favorites
-					</Dropdown.Toggle>
-
-					<Dropdown.Menu>
-						<ul>
-							{store.favoritesList.map((favorite, index) => (
-								<li key={index}>{favorite}</li>
-							))}
-						</ul>
-					</Dropdown.Menu>
-				</Dropdown>
-			</div>
-		</nav>
-	);
-};
-
-/*export const Navbar = () => {
-	const { store, actions } = useContext(Context);
 	const [isHovering, setisHovering] = React.useState(-1);
 
-	const deleteToDo = indexToRemove => {
-		let filterList = favoritesList.filter((taskToRemove, i) => i != indexToRemove);
-		setStore({ favoritesList: filterList });
+	const deleteFavorite = indexToRemove => {
+		let filterList = store.favoritesList.filter((favoriteToRemove, index) => index != indexToRemove);
+		actions.setStore({ favoritesList: filterList }); /*Problem here*/
 	};
 
 	return (
@@ -55,18 +24,21 @@ export const Navbar = () => {
 				<Dropdown>
 					<Dropdown.Toggle variant="primary" id="dropdown-basic">
 						Favorites
-						<Badge bg="secondary">{favoritesList.length}</Badge>
+						<Badge bg="success">{store.favoritesList.length}</Badge>
 					</Dropdown.Toggle>
 
 					<Dropdown.Menu>
 						<ul>
 							{store.favoritesList.map((favorite, index) => (
-								<li key={index}>
+								<li
+									key={index}
+									onMouseEnter={() => setisHovering(index)}
+									onMouseLeave={() => setisHovering(-1)}>
 									{favorite}
 									<span
-										className={`text-danger ${isHovering == i ? "" : "hidden"}`}
-										onClick={() => deleteToDo(i)}>
-										x
+										className={`text-dark ${isHovering == index ? "" : "hidden"} px-2`}
+										onClick={() => deleteFavorite(index)}>
+										<i className="fas fa-trash-alt" />
 									</span>
 								</li>
 							))}
@@ -76,4 +48,4 @@ export const Navbar = () => {
 			</div>
 		</nav>
 	);
-};*/
+};
