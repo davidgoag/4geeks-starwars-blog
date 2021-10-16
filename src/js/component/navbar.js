@@ -5,6 +5,13 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const [isHovering, setisHovering] = React.useState(-1);
+	const [showDropdown, setShowDropdown] = useState(false);
+
+	let show = "";
+
+	if (showDropdown) {
+		show = "show";
+	}
 
 	return (
 		<nav className="navbar navbar-light bg-secondary bg-opacity-25">
@@ -16,30 +23,36 @@ export const Navbar = () => {
 						className="p-0 m-0"
 					/>
 				</a>
-				<Dropdown>
-					<Dropdown.Toggle variant="primary" id="dropdown-basic">
+				<div className="dropdown">
+					<button
+						className="btn btn-primary dropdown-toggle"
+						type="button"
+						id="dropdownMenuButton1"
+						data-bs-toggle="dropdown"
+						aria-expanded="false"
+						onClick={() => setShowDropdown(!showDropdown)}>
 						Favorites
-						<Badge bg="success">{store.favoritesList.length}</Badge>
-					</Dropdown.Toggle>
-
-					<Dropdown.Menu>
-						<ul>
-							{store.favoritesList.map((favorite, index) => (
-								<li
-									key={index}
-									onMouseEnter={() => setisHovering(index)}
-									onMouseLeave={() => setisHovering(-1)}>
-									{favorite}
-									<span
-										className={`text-dark ${isHovering == index ? "" : "hidden"} px-2`}
-										onClick={() => actions.deleteFavorite(favorite)}>
-										<i className="fas fa-trash-alt" />
-									</span>
-								</li>
-							))}
-						</ul>
-					</Dropdown.Menu>
-				</Dropdown>
+						<span className="badge bg-secondary mx-1">{store.favoritesList.length}</span>
+					</button>
+					<ul
+						className={store.favoritesList.length > 0 ? "dropdown-menu " + show : "d-none"}
+						aria-labelledby="dropdownMenuButton1">
+						{store.favoritesList.map((favorite, index) => (
+							<li
+								key={index}
+								onMouseEnter={() => setisHovering(index)}
+								onMouseLeave={() => setisHovering(-1)}
+								className="px-2 py-1">
+								{favorite}
+								<span
+									className={`text-dark ${isHovering == index ? "" : "hidden"} ps-2`}
+									onClick={() => actions.deleteFavorite(favorite)}>
+									<i className="fas fa-trash-alt" />
+								</span>
+							</li>
+						))}
+					</ul>
+				</div>
 			</div>
 		</nav>
 	);
