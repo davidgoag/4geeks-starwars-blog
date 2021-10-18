@@ -17,13 +17,13 @@ export const DetailsCharacters = props => {
 			<div className="row mb-3">
 				<div className="col">
 					<img
-						src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic1.srcdn.com%2Fwordpress%2Fwp-content%2Fuploads%2F2019%2F04%2FStar-Wars-The-Force-Awakens.jpg&f=1&nofb=1"
+						src="https://cdn.shopify.com/s/files/1/1057/4964/products/star-wars-vintage-movie-poster-original-british-quad-30x40-6154.jpg"
 						className="img-fluid"
 						height="60%"
 						alt="..."
 					/>
 				</div>
-				<div className="col">
+				<div className="col transparentbox p-5">
 					<h1>{item.name}</h1>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -35,33 +35,33 @@ export const DetailsCharacters = props => {
 			</div>
 			<div className="row mb-3">
 				<hr />
-				<div className="col">
+				<div className="col transparentbox2">
 					<h4>Name</h4>
 					<h5>{item.name}</h5>
 				</div>
-				<div className="col">
+				<div className="col transparentbox2">
 					<h4>Birth Year</h4>
 					<h5>{item.birth_year}</h5>
 				</div>
-				<div className="col">
+				<div className="col transparentbox2 capson">
 					<h4>Gender</h4>
 					<h5>{item.gender}</h5>
 				</div>
-				<div className="col">
+				<div className="col transparentbox2">
 					<h4>Height</h4>
 					<h5>{item.height}</h5>
 				</div>
-				<div className="col">
+				<div className="col transparentbox2 capson">
 					<h4>Skin Color</h4>
 					<h5>{item.skin_color}</h5>
 				</div>
-				<div className="col">
+				<div className="col transparentbox2 capson">
 					<h4>Eye Color</h4>
 					<h5>{item.eye_color}</h5>
 				</div>
 			</div>
 			<Link to="/home">
-				<h5>Back to home</h5>
+				<button className="btn btn-primary mt-5">Home page</button>
 			</Link>
 		</div>
 	);

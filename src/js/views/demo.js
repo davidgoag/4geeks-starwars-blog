@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { Context } from "../store/appContext";
+import { myContext } from "../store/appContext";
 
 import "../../styles/demo.scss";
 
 export const Demo = () => {
-	const { store, actions } = useContext(Context);
+	const { store, actions } = useContext(myContext);
 
 	return (
 		<div className="container">

@@ -1,11 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => (
-	<footer className="footer my-0 mt-auto pt-3 pb-2 text-center bg-secondary bg-opacity-50">
-		<p>
-			<strong>
-				Made with <i className="fa fa-heart text-danger" /> by <a href="https://github.com/paola9896">Paola</a>
-			</strong>
-		</p>
+	<footer id="sticky-footer" className="flex-shrink-0 py-4 blackbackground text-white-50">
+		<div className="container text-center">
+			<Link to="/home">
+				<img
+					src="https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo-3-1.png"
+					height="35rem"
+					className="p-0 m-0"
+				/>
+			</Link>
+		</div>
 	</footer>
 );
